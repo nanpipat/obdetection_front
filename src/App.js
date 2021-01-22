@@ -21,7 +21,6 @@ const App = () => {
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
-    console.log(imageSrc)
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
 
@@ -47,7 +46,6 @@ const App = () => {
 
   const obDetect = (img) => {
     setLoading(true);
-    console.log(img, "test")
     if (!img) {
       alert("Not Found Image")
       setLoading(false);
@@ -62,7 +60,6 @@ const App = () => {
       let resu = "";
       resu = result.raw_data
       setImgResult("data:" + imgType + ";base64," + result.raw_data)
-      console.log(resu, "asdasdasd");
       setLoading(false);
     }, err => {
       alert(err);
@@ -77,13 +74,11 @@ const App = () => {
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = () => {
         // Make a fileInfo Object
-        console.log("Called", reader);
         setImgPreview(reader.result)
       };
       setFilename(event.target.files[0].name)
       setImgType(event.target.files[0].type)
     }
-    console.log(event.target.files[0], "img")
   }
 
 
@@ -105,7 +100,6 @@ const App = () => {
   }
 
   const closeModal = () => {
-    console.log("asdasdas")
     setImgSrc(null);
     setIsOpen(false);
   }
